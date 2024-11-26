@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Hallgató">
+	<meta name="description" content="Álomhajó utazási iroda weboldala">
+	<title>Álomhajó utazási iroda</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="képek/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+	<header>
+		<img src="képek/logokep.png" alt="Az álomhajó utazási iroda logója" class="logo">
+		<h1>Álomhajó utazási iroda</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="index.html">Rólunk</a></li>
+			<li><a href="tel.html">Téli túra</a></li>
+			<li><a href="nyar.html">Nyári túra</a></li>
+			<li><a href="kapcsolat.html">Kapcsolat</a></li>
+			<li><a href="#" id="active">Árak</a></li>
+		</ul>
+	</nav>
+	<div id="content">
+	<section class="kalkulator">
+		<article class="cim">
+			<h2>Ár kalkulátor</h2>
+            <p>
+                Számítsa ki utazásának várható költségét még a foglalás előtt, így biztosan tudhatja nagyjából milyen összegre számíthat majd. Természetesen a foglalás során további egyedi tényezőket is figyelembe veszünk, a kalkulátor egy személyenként vett átlagos költséget mutat meg.
+            </p>
+		</article>
+		<form>
+			Melyik túránkon szeretne részt venni?<br>
+			<ul>
+					<li>
+						<input type="radio" name="tny" id="tny1" checked>
+						<label for="tny1">A téli túrán szeretnék részt venni.</label>
+					</li>
+					<li>
+						<input type="radio" name="tny" id="tny2">
+						<label for="tny2">A nyári túrán szeretnék részt venni.</label>
+					</li>
+			</ul>
+			Melyik kabinunkat preferálná az utazás során?<br>
+			<ul>
+					<li>
+						<input type="radio" name="kabin" id="kabin1" checked>
+						<label for="kabin1">Belső kabin (IB)</label>
+					</li>
+					<li>
+						<input type="radio" name="kabin" id="kabin2">
+						<label for="kabin2">Ablakos kabin (OL1)</label>
+					</li>
+					<li>
+						<input type="radio" name="kabin" id="kabin3">
+						<label for="kabin3">Balkonos kabin (BM1)</label>
+					</li>
+					<li>
+						<input type="radio" name="kabin" id="kabin4">
+						<label for="kabin4">Balkonos kabin (BM2)</label>
+					</li>
+			</ul>
+			Milyen étkezési csomagot szeretne?<br>
+			<ul>
+					<li>
+						<input type="radio" name="kaja" id="kaja1">
+						<label for="kaja1">All inclusive ellátást szeretnék.</label>
+					</li>
+					<li>
+						<input type="radio" name="kaja" id="kaja2">
+						<label for="kaja2">Fél panziós ellátást szeretnék.</label>
+					</li>
+					<li>
+						<input type="radio" name="kaja" id="kaja3" checked>
+						<label for="kaja3">Á la carte szeretnék étkezni. (Ez a hajón felmerülő további költséget jelent.)</label>
+					</li>
+			</ul>
+			Szeretne-e idegenvezetésen részt venni?<br>
+			<ul>
+					<li>
+						<input type="radio" name="iv" id="iv1">
+						<label for="iv1">Igen, minden lehetséges helyszínen.</label>
+					</li>
+					<li>
+						<input type="radio" name="iv" id="iv2">
+						<label for="iv2">Igen, általam kiválasztott két helyszínen.</label>
+					</li>
+					<li>
+						<input type="radio" name="iv" id="iv3" checked>
+						<label for="hiv3">Nem szeretnék részt venni.</label>
+					</li>
+			</ul>
+			
+			Igénybe szeretné-e venni a fedélzeten a szauna és masszázs szolgáltatásokat?<br>
+			<ul>
+					<li>
+						<input type="radio" name="szau" id="szau1">
+						<label for="szau1">Igen, mindekét szolgáltatást szeretném.</label>
+					</li>
+					<li>
+						<input type="radio" name="szau" id="szau2">
+						<label for="szau2">Igen, szeretném használni a szauna világot.</label>
+					</li>
+					<li>
+						<input type="radio" name="szau" id="szau3" checked>
+						<label for="szau3">Nem szeretnék élni ezekkel a lehetőségekkel.</label>
+					</li>
+			</ul>
+			Jogosult valamilyen kedvezményre?<br>
+			<ul>
+					<li>
+						<input type="checkbox" name="kedv" id="kedv1">
+						<label for="kedv1">Családi kedvezményt szeretnék. (2 felnőtt és minimum 2 három év feletti gyermek esetén érvényes)</label>
+					</li>
+					<li>
+						<input type="checkbox" name="kedv" id="kedv2">
+						<label for="kedv2">Nyugdíjas kedvezményt szeretnék. (65 éves kor felett érvényes)</label>
+					</li>
+					<li>
+						<input type="checkbox" name="kedv" id="kedv3">
+						<label for="kedv3">Törzsvásárlói kedvezményt szeretnék. (Abban az esetben érvényes, ha a foglalás során be tudja mutatni, hogy legalább kétszer utazott már velünk)</label>
+					</li>
+					<li>
+						<input type="checkbox" name="kedv" id="kedv4" checked>
+						<label for="kedv4">Az alábbi kedvezmények egyikére sem vagyok jogosult.</label>
+					</li>
+			</ul>
+			<input type="button" value="Kalkulálás" id="kalk">
+			<a id="osszeg"></a>
+		</form></section>
+	<!--<aside> Az utazás összköltsége: <span id="result"></span> Ft.<br>
+	Ebből az hajótúra alapdíja</aside>-->
+
+	</div>
+	<footer>
+		<p>Az oldal nem reprezentál valós vállalatot, csupán tanítási célokat szolgál.<br>
+			Készítette: Turán Dorottya | 2024</p>
+	</footer>
+	<script src="kalkulator.js"></script>
+</body>
+
+</html>

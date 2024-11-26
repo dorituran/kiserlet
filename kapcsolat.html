@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Turán Dorottya Lilla">
+	<meta name="description" content="Álomhajó utazási iroda weboldala">
+	<title>Álomhajó utazási iroda</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="képek/favicon.png" type="image/x-icon">
+	<script src="jquery-3.7.1.js"></script>
+	<script src="jquery-validation-1/dist/jquery.validate.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<img src="képek/logokep.png" alt="Az álomhajó utazási iroda logója" class="logo">
+		<h1>Álomhajó utazási iroda</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="index.html">Rólunk</a></li>
+			<li><a href="tel.html">Téli túra</a></li>
+			<li><a href="nyar.html">Nyári túra</a></li>
+			<li><a href="#" id="active">Kapcsolat</a></li>
+			<li><a href="arak.html">Árak</a></li>
+		</ul>
+	</nav>
+	
+	<div id="content">
+		<article class="cim">
+			<h2>Kapcsolat</h2>
+			<p>
+				Lépjen velünk kapcsolatba űrlapunk segítségével, hogy az ön igényeinek megfelelő, személyre szabott ajánlatot adhassunk. Amennyiben további kérdése van keressen minket bizalommal telefonon, a közösségi platformok valamelyikén vagy akár hétköznaponként személyesen az irodánkban. 
+			</p>
+		</article>
+			<article class="urlap">
+				<form method="post" id="myform" action="https://rf.uni-corvinus.hu/webfejlesztes/receive.php" novalidate="novalidate">
+					<label>Adja meg a vezeték- és keresztnevét!<br><input type="text" name="nev"></label><br>
+					<label>Adjon meg egy jelszót amivel a foglalás során igazolhatja magát! <br><input type="password" name="jelsz"></label><br>
+					<label>Adja meg a születési dátumát!<br><input type="date" name="szuldat" value="2000-01-01"></label><br>
+					<label>Adja meg a telefonszámát!<br><input type="text" name="tel" placeholder="+36"></label><br>
+					<label>Adja meg az email címét!<br><input type="email" name="email"></label><br>
+					<label><input type="checkbox" name="hirlevel" checked> Szeretnék feliratkozni a hírlevélre.</label><br>
+					Melyik hajóutunkon szeretne részt venni?<br>
+						<label><input type="radio" name="nyartel" value="tel" checked> Téli túra<br></label>
+						<label><input type="radio" name="nyartel" value="nyar"> Nyári túra<br></label>
+					Melyik időpont/időpontok iránt érdeklődik?<br>
+						<select multiple name="idopont[]" size="6">
+							<option>Téli: 2024. December 22-2025. Január 2</option>
+							<option>Téli: 2025. Január 10-21</option>
+							<option>Téli: 2025. Január 31-Február 11</option>
+							<option>Téli: 2025. Február 14-25</option>
+							<option>Téli: 2025. Március 7-18</option>
+							<option>Téli: 2025. Március 28 - Április 8</option>
+							<option>Nyári: 2025. Május 1-11</option>
+							<option>Nyári: 2025. Május 16-26</option>
+							<option>Nyári: 2025. Június 6-16</option>
+							<option>Nyári: 2025. Június 20-30</option>
+							<option>Nyári: 2025. Július 4-14</option>
+							<option>Nyári: 2025. Július 25-Augusztus 4</option>
+							<option>Nyári: 2025. Augusztus 15-25</option>
+							<option>Nyári: 2025. Szeptember 5-15</option>
+							<option>Nyári: 2025. Szeptember 19-29</option>
+						</select><br>
+					<label>Hány főre szeretne foglalni?<input type="number" min="1" max="100" step="1" name="fo" value="2"></label><br>
+					<label>Válasszon kabin kategóriát! <br>
+							<select name="kabintipus">
+								<option>Belső kabin (IB)</option>
+								<option>Ablakos kabin (OL1)</option>
+								<option>Balkonos kabin (BM1)</option>
+								<option>Balkonos kabin (BM2)</option>
+								</select></label><br>
+					<label>Amennyiben egyéb kérése, vagy kérdése van jelezze nekünk!<br> <textarea rows="10" cols="40" name="kerdes"></textarea></label><br>    
+				
+				
+				<input type="submit" value="Ajánlat kérés" class="mybutton">
+				</form>
+<script>
+$(document).ready(function(){//http://www.sitepoint.com/basic-jquery-form-validation-tutorial/
+	$("#myform").validate({
+	rules: {
+		nev: "required",
+		tel: {
+			required: true,
+			minlength: 10
+		},
+		email: {
+		email: true
+		},
+		jelsz: {
+		required: true,
+		minlength: 8
+		},
+		fo:{
+			min:1,
+			max:20
+		}
+	},
+	messages: {
+		nev: "  Írja be a vezeték- és a keresztnevét!",
+		jelsz: {
+			required: "  Adja meg a jelszavát!",
+			minlength: "  A megadott jelszó legalább 8 karakter hosszú legyen!"},
+		tel: {
+			required: " Adja meg a telefonszámát az egyszerűbb kapcsolatfelvétel érdekében!",
+			minlength: " Kérem ellenőrizze jól adta-e meg a telefonszámát!"
+		},
+		email: {
+			required: "Kérem adjon meg egy email címet amin feljehetjük Önnel a kapcsolatot!",
+			email: " Kérem ellenőrizze jól adta-e meg az email címét!"},
+		fo:{
+			max: "20 fő fölötti foglalás esetén vegye fel velünk a kapcsolatot telefonon, vagy keressen fel minket személyesen irodánkban."
+		}
+	},
+	});
+	});
+</script>
+
+			</article>
+			<div id="eler">
+				<aside class="email">
+			Elérhetőségeink:
+			<p>
+				Email: alomhajoutazas@gmail.com<br>
+				Telefon szám: 06-1-234-5678<br>
+				Instagram: @nyaralniviszazalomhajo<br>
+				Tiktok: @nyaralniviszazalomhajo<br>
+			</p></aside>
+			<aside class="helyszin">
+				<img src="képek/irodahely.png" alt="Irodánk elhelyezkedése a térképen" class="irodakep" ><br>
+				Cím: 1024 Budapest, Lövőház u. 2-6,<br>
+				Mammut I. bevásárló központ földszint
+			</aside></div>
+	</div>
+	<footer>
+		<p>Az oldal nem reprezentál valós vállalatot, csupán tanítási célokat szolgál.<br>
+			Készítette: Turán Dorottya | 2024</p>
+	</footer>
+</body>
+
+</html>
